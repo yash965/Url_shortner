@@ -20,7 +20,7 @@ public class URL {
     public String longUrl;
 
     @Column (nullable = false)
-    public String createdDate;
+    public Date createdDate;
 
     public Date expireDate;
 }
