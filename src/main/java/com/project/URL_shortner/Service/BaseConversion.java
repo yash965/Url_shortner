@@ -1,5 +1,8 @@
 package com.project.URL_shortner.Service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class BaseConversion {
     String base62String = "abcdefghiklmniopqrstuvwxyz0123456789ABCDEFGHIJKLMNIOPQRSTUVWXYZ";
     char[] allowedCharacters = base62String.toCharArray();

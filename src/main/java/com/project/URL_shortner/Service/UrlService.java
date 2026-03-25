@@ -4,9 +4,11 @@ import com.project.URL_shortner.Dto.UrlLongRequest;
 import com.project.URL_shortner.Entity.URL;
 import com.project.URL_shortner.Repository.UrlShortnerRepo;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
+@Service
 public class UrlService {
     public final BaseConversion baseConversion;
     public final UrlShortnerRepo urlRepository;
@@ -37,7 +39,10 @@ public class UrlService {
 
         if(url.getExpireDate() != null && url.expireDate.before(new Date()))
         {
-            
+            urlRepository.delete(url);
+            throw new EntityNotFoundException("Link Expired");
         }
+
+        return url.getLongUrl();
     }
 }
